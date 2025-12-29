@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Chelsea+Market&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== ACHTERGROND ===== */
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+
+    html {
+      background: linear-gradient(135deg,
+        #a8f9f2 0%,
+        #effffe 50%,
+        #a8f9f2 100%);
+      background-attachment: fixed;
+    }
+
+    body {
+      background: transparent;
+      min-height: 100vh;
+      font-family: "Chelsea Market", cursive;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      color: white;
+    }
+
+    /* ===== TERUG KNOP ===== */
+    .back-btn {
+      position: fixed;
+      top: 24px;
+      left: 24px;
+      background-color: #72b3af;
+      color: white;
+      padding: 8px 18px;
+      border-radius: 30px;
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      z-index: 1000;
+      transition: transform 0.15s ease, background-color 0.2s ease;
+    }
+
+    .back-btn:hover {
+      background-color: #6aa8a4;
+      transform: scale(1.08);
+    }
+
+    @keyframes clickBounce {
+      0% { transform: scale(1); }
+      50% { transform: scale(0.85); }
+      100% { transform: scale(1); }
+    }
+
+    .back-btn.animate {
+      animation: clickBounce 0.18s ease;
+    }
+
+    /* ===== NAAM ===== */
+    .name-pill {
+      background-color: #72b3af;
+      padding: 14px 36px;
+      border-radius: 40px;
+      font-size: 20px;
+      letter-spacing: 0.12em;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .page-wrapper {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* ===== TITEL ===== */
+    .page-title {
+      background-color: #72b3af;
+      padding: 22px 60px;
+      border-radius: 55px;
+      display: inline-block;
+      margin: 0 0 32px 0;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: clamp(2.6rem, 6vw, 3.8rem);
+      font-weight: 600;
+    }
+
+    /* ===== CONTACT FORM ===== */
+    .contact-box {
+      background-color: #72b3af;
+      padding: 32px 40px;
+      border-radius: 32px;
+      width: 100%;
+      max-width: 650px;
+      margin: 0 auto;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.14);
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 1.05rem;
+      font-weight: 600;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 12px 15px;
+      border-radius: 16px;
+      border: none;
+      font-size: 1rem;
+      font-family: "Chelsea Market", cursive;
+      margin-bottom: 18px;
+      background: #f8ffff;
+      color: #333;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    button {
+      width: 100%;
+      background-color: #ffffff;
+      color: #72b3af;
+      padding: 14px;
+      border: none;
+      border-radius: 40px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.18s ease, background-color 0.25s ease;
+    }
+
+    button:hover {
+      background-color: #e7f7f7;
+      transform: scale(1.05);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      body {
+        padding: 24px;
+      }
+
+      .page-title {
+        padding: 18px 40px;
+      }
+
+      .contact-box {
+        padding: 28px 24px;
+      }
+
+      .back-btn {
+        top: 16px;
+        left: 16px;
+        font-size: 13px;
+        padding: 7px 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- TERUG KNOP -->
+  <a href="index.html" class="back-btn" id="backBtn">← Terug</a>
+
+  <!-- NAAM -->
+  <div class="name-pill">
+    OLEKSANDRA ZHARINOVA 1GDM1
+  </div>
+
+  <div class="page-wrapper">
+
+    <!-- TITEL -->
+    <h1 class="page-title">CONTACT</h1>
+
+    <!-- FORMULIER -->
+    <div class="contact-box">
+      <form action="confirmation.html" method="POST">
+
+        <label for="name">Naam</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="message">Bericht</label>
+        <textarea id="message" name="message" required></textarea>
+
+        <button type="submit">Verzenden</button>
+
+      </form>
+    </div>
+
+  </div>
+
+  <script>
+    const backBtn = document.getElementById("backBtn");
+    backBtn.addEventListener("click", () => {
+      backBtn.classList.add("animate");
+      setTimeout(() => backBtn.classList.remove("animate"), 200);
+    });
+  </script>
+
+</body>
+</html>
+

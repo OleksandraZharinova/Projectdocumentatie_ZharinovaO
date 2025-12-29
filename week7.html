@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Week 7</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Chelsea+Market&family=Acme&display=swap" rel="stylesheet">
+
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      overflow: hidden; /* >>> zorgt dat de pagina niet kan scrollen <<< */
+    }
+
+    html {
+      background: linear-gradient(135deg,
+        #a8f9f2 0%,
+        #effffe 50%,
+        #a8f9f2 100%);
+      background-attachment: fixed;
+    }
+
+    body {
+      background: transparent;
+      min-height: 100vh;
+      font-family: "Chelsea Market", cursive;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      color: white;
+    }
+
+    /* TERUG KNOP */
+    .back-btn {
+      position: fixed;
+      top: 24px;
+      left: 24px;
+      background-color: #72b3af;
+      color: white;
+      padding: 8px 18px;
+      border-radius: 30px;
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      z-index: 2000;
+      transition: transform 0.15s ease, background-color 0.2s ease;
+      font-family: "Chelsea Market", cursive;
+    }
+
+    .back-btn:hover {
+      background-color: #6aa8a4;
+      transform: scale(1.08);
+    }
+
+    .back-btn.animate {
+      animation: clickBounce 0.18s ease;
+    }
+
+    @keyframes clickBounce {
+      0% { transform: scale(1); }
+      50% { transform: scale(0.85); }
+      100% { transform: scale(1); }
+    }
+
+    .name-pill {
+      color: #72b3af;
+      padding: 14px 36px;
+      border-radius: 40px;
+      font-size: 22px;
+      letter-spacing: 0.12em;
+      font-weight: 600;
+      margin-bottom: 5px;
+      font-family: "Chelsea Market", cursive;
+    }
+
+    .page-wrapper {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .week-title {
+      background-color: #72b3af;
+      padding: 18px 50px;
+      border-radius: 50px;
+      display: inline-block;
+      margin: 0 0 20px 0;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 600;
+      font-family: "Chelsea Market", cursive;
+    }
+
+    .week-text {
+      background-color: #72b3af;
+      padding: 22px 30px;
+      border-radius: 55px;
+      font-size: clamp(2.2rem, 10vw, 5rem); 
+      font-weight: 700;
+      max-width: 720px;
+      margin: 0 auto 30px auto;
+      line-height: 1.4;
+      font-family: "Acme", sans-serif;
+      margin-top: 100px; 
+    }
+  </style>
+</head>
+
+<body>
+
+  <a href="index.html" class="back-btn" id="backBtn">← Terug</a>
+
+  <div class="name-pill">
+    OLEKSANDRA ZHARINOVA 1GDM1
+  </div>
+
+  <div class="page-wrapper">
+    <h1 class="week-title">WEEK 7</h1>
+
+    <p class="week-text">
+      Toetsweek
+    </p>
+  </div>
+
+  <script>
+    const backBtn = document.getElementById("backBtn");
+    backBtn.addEventListener("click", () => {
+      backBtn.classList.add("animate");
+      setTimeout(() => backBtn.classList.remove("animate"), 200);
+    });
+
+    const img = document.getElementById("weekImg");
+
+    if (img) {
+      img.addEventListener("click", () => {
+        const wasEnlarged = img.classList.contains("enlarged");
+        img.classList.toggle("enlarged");
+
+        if (!wasEnlarged) {
+          img.scrollIntoView({ behavior: "smooth", block: "center" });
+        } else {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
