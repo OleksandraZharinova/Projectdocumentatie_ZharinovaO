@@ -133,6 +133,36 @@
       transform: translateY(-200px) scale(2);
     }
 
+    /* ===== GITHUB KNOP  ===== */
+    .github-bottom {
+      margin-top: 20px;     
+      padding-bottom: 40px;  
+      display: flex;
+      justify-content: center;
+    }
+
+    .side-btn {
+      background-color: #72b3af;
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      padding: 12px 34px;
+      border-radius: 30px;
+      font-weight: 600;
+      transition: transform 0.15s ease, background-color 0.2s ease;
+      display: inline-block;
+      text-align: center;
+    }
+
+    .side-btn:hover {
+      background-color: #6aa8a4;
+      transform: scale(1.06);
+    }
+
+    .button-animate {
+      animation: clickBounce 0.15s ease;
+    }
+
     /* ===== RESPONSIVE ===== */
     @media (max-width: 768px) {
       body {
@@ -152,6 +182,11 @@
         left: 16px;
         font-size: 13px;
         padding: 7px 16px;
+      }
+
+      .github-bottom {
+        margin-top: 50px;
+        padding-bottom: 28px;
       }
     }
   </style>
@@ -188,6 +223,19 @@
 
   </div>
 
+  <!-- GITHUB KNOP ONDERAAN -->
+  <div class="github-bottom">
+    <a
+      href="https://github.com/OleksandraZharinova/Projectdocumentatie_ZharinovaO.git"
+      class="side-btn"
+      target="_blank"
+      rel="noopener noreferrer"
+      id="githubBtn"
+    >
+      GitHub
+    </a>
+  </div>
+
   <script>
     // Click-animatie voor de terugknop
     const backBtn = document.getElementById("backBtn");
@@ -196,24 +244,24 @@
       setTimeout(() => backBtn.classList.remove("animate"), 200);
     });
 
-    // Zelfde zoom/scroll gedrag als Week 1
+    // Zoom/scroll gedrag
     const img = document.getElementById("weekImg");
-
     img.addEventListener("click", () => {
       const wasEnlarged = img.classList.contains("enlarged");
       img.classList.toggle("enlarged");
 
       if (!wasEnlarged) {
-        img.scrollIntoView({
-          behavior: "smooth",
-          block: "center"
-        });
+        img.scrollIntoView({ behavior: "smooth", block: "center" });
       } else {
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth"
-        });
+        window.scrollTo({ top: 0, behavior: "smooth" });
       }
+    });
+
+    // GitHub knop animatie
+    const githubBtn = document.getElementById("githubBtn");
+    githubBtn.addEventListener("click", () => {
+      githubBtn.classList.add("button-animate");
+      setTimeout(() => githubBtn.classList.remove("button-animate"), 150);
     });
   </script>
 
