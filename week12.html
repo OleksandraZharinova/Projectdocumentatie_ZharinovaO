@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Week 11</title>
+  <title>Week 12</title>
 
-  <!-- Zelfde Google Fonts als Week 1 -->
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Chelsea+Market&family=Acme&display=swap" rel="stylesheet">
 
   <style>
@@ -16,7 +16,7 @@
 
     html {
       background: linear-gradient(135deg,
-        #d3fdff  0%,
+        #d3fdff 0%,
         #e7fffe 40%,
         #f8ffff 100%);
       background-attachment: fixed;
@@ -51,7 +51,6 @@
       cursor: pointer;
       z-index: 2000;
       transition: transform 0.15s ease, background-color 0.2s ease;
-      font-family: "Chelsea Market", cursive;
     }
 
     .back-btn:hover {
@@ -78,7 +77,6 @@
       letter-spacing: 0.12em;
       font-weight: 600;
       margin-bottom: 5px;
-      font-family: "Chelsea Market", cursive;
     }
 
     .page-wrapper {
@@ -98,7 +96,6 @@
       letter-spacing: 0.14em;
       font-size: clamp(2.6rem, 6vw, 3.8rem);
       font-weight: 600;
-      font-family: "Chelsea Market", cursive;
     }
 
     /* ===== TEKST ===== */
@@ -133,6 +130,36 @@
       transform: translateY(-115px) scale(1.45);
     }
 
+    /* ===== GITHUB KNOP ===== */
+    .github-bottom {
+      margin-top: 20px;      /* ✅ vaste afstand */
+      padding-bottom: 40px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .side-btn {
+      background-color: #72b3af;
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      padding: 12px 34px;
+      border-radius: 30px;
+      font-weight: 600;
+      transition: transform 0.15s ease, background-color 0.2s ease;
+      display: inline-block;
+      text-align: center;
+    }
+
+    .side-btn:hover {
+      background-color: #6aa8a4;
+      transform: scale(1.06);
+    }
+
+    .button-animate {
+      animation: clickBounce 0.15s ease;
+    }
+
     /* ===== RESPONSIVE ===== */
     @media (max-width: 768px) {
       body {
@@ -152,6 +179,11 @@
         left: 16px;
         font-size: 13px;
         padding: 7px 16px;
+      }
+
+      .github-bottom {
+        margin-top: 16px;
+        padding-bottom: 28px;
       }
     }
   </style>
@@ -174,11 +206,12 @@
 
     <!-- TEKST -->
     <p class="week-text">
-Deze week heb ik mijn schermen volledig afgerond, de laatste visuele aanpassingen gedaan en ze interactief gemaakt. 
-<br><br>
-Tijdens de les heb ik feedback gekregen op mijn projectdocumentatie. 
-In en na de les heb ik vervolgens enkele kleine aanpassingen doorgevoerd: ik heb het lettertype van de tekst veranderd, het kader rond mijn naam verwijderd en ervoor gezorgd dat de foto wordt vergroot wanneer je erop klikt. 
-Ook heb ik links toegevoegd naar de PDF-versie van mijn projectdocumentatie en naar de code op GitHub.
+      Deze week heb ik mijn schermen volledig afgerond, de laatste visuele aanpassingen gedaan en ze interactief gemaakt.
+      <br><br>
+      Tijdens de les heb ik feedback gekregen op mijn projectdocumentatie.
+      In en na de les heb ik vervolgens enkele kleine aanpassingen doorgevoerd: ik heb het lettertype van de tekst veranderd,
+      het kader rond mijn naam verwijderd en ervoor gezorgd dat de foto wordt vergroot wanneer je erop klikt.
+      Ook heb ik links toegevoegd naar de PDF-versie van mijn projectdocumentatie en naar de code op GitHub.
     </p>
 
     <!-- AFBEELDING -->
@@ -186,34 +219,49 @@ Ook heb ik links toegevoegd naar de PDF-versie van mijn projectdocumentatie en n
 
   </div>
 
+  <!-- GITHUB KNOP -->
+  <div class="github-bottom">
+    <a
+      href="https://github.com/OleksandraZharinova/Projectdocumentatie_ZharinovaO.git"
+      class="side-btn"
+      target="_blank"
+      rel="noopener noreferrer"
+      id="githubBtn"
+    >
+      GitHub
+    </a>
+  </div>
+
   <script>
-    // Kleine click-animatie voor de terugknop
+    // Terugknop animatie
     const backBtn = document.getElementById("backBtn");
     backBtn.addEventListener("click", () => {
       backBtn.classList.add("animate");
       setTimeout(() => backBtn.classList.remove("animate"), 200);
     });
 
-    // Zelfde zoom/scroll gedrag als de andere weken
+    // Afbeelding zoom/scroll
     const img = document.getElementById("weekImg");
-
     img.addEventListener("click", () => {
       const wasEnlarged = img.classList.contains("enlarged");
       img.classList.toggle("enlarged");
 
       if (!wasEnlarged) {
-        img.scrollIntoView({
-          behavior: "smooth",
-          block: "center"
-        });
+        img.scrollIntoView({ behavior: "smooth", block: "center" });
       } else {
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth"
-        });
+        window.scrollTo({ top: 0, behavior: "smooth" });
       }
+    });
+
+    // GitHub knop animatie
+    const githubBtn = document.getElementById("githubBtn");
+    githubBtn.addEventListener("click", () => {
+      githubBtn.classList.add("button-animate");
+      setTimeout(() => githubBtn.classList.remove("button-animate"), 150);
     });
   </script>
 
 </body>
 </html>
+
+
