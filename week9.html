@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Week 9</title>
 
-  <!-- Zelfde Google Fonts als Week 1 -->
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Chelsea+Market&family=Acme&display=swap" rel="stylesheet">
 
   <style>
@@ -16,14 +16,13 @@
 
     html {
       background: linear-gradient(135deg,
-        #d3fdff  0%,
+        #d3fdff 0%,
         #e7fffe 40%,
         #f8ffff 100%);
       background-attachment: fixed;
     }
 
     body {
-      background: transparent;
       min-height: 100vh;
       font-family: "Chelsea Market", cursive;
       padding: 40px;
@@ -51,7 +50,6 @@
       cursor: pointer;
       z-index: 2000;
       transition: transform 0.15s ease, background-color 0.2s ease;
-      font-family: "Chelsea Market", cursive;
     }
 
     .back-btn:hover {
@@ -78,7 +76,6 @@
       letter-spacing: 0.12em;
       font-weight: 600;
       margin-bottom: 5px;
-      font-family: "Chelsea Market", cursive;
     }
 
     .page-wrapper {
@@ -93,12 +90,11 @@
       padding: 22px 60px;
       border-radius: 55px;
       display: inline-block;
-      margin: 0 0 24px 0;
+      margin-bottom: 24px;
       text-transform: uppercase;
       letter-spacing: 0.14em;
       font-size: clamp(2.6rem, 6vw, 3.8rem);
       font-weight: 600;
-      font-family: "Chelsea Market", cursive;
     }
 
     /* ===== TEKST ===== */
@@ -107,7 +103,6 @@
       padding: 22px 34px;
       border-radius: 32px;
       font-size: 1.15rem;
-      font-weight: 500;
       max-width: 720px;
       margin: 0 auto 30px auto;
       line-height: 1.55;
@@ -123,9 +118,6 @@
       border-radius: 28px;
       box-shadow: 0 10px 25px rgba(0,0,0,0.12);
       cursor: pointer;
-      position: relative;
-      z-index: 1;
-      transform-origin: center center;
       transition: transform 0.4s ease-in-out;
     }
 
@@ -133,25 +125,47 @@
       transform: translateY(-180px) scale(1.9);
     }
 
+    /* ===== GITHUB KNOP ===== */
+    .github-bottom {
+      margin-top: 20px;      /* ✅ vaste afstand */
+      padding-bottom: 40px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .side-btn {
+      background-color: #72b3af;
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      padding: 12px 34px;
+      border-radius: 30px;
+      font-weight: 600;
+      transition: transform 0.15s ease, background-color 0.2s ease;
+    }
+
+    .side-btn:hover {
+      background-color: #6aa8a4;
+      transform: scale(1.06);
+    }
+
+    .button-animate {
+      animation: clickBounce 0.15s ease;
+    }
+
     /* ===== RESPONSIVE ===== */
     @media (max-width: 768px) {
-      body {
-        padding: 24px;
-      }
-
-      .week-image {
-        width: 90%;
-      }
-
-      .week-title {
-        padding: 18px 40px;
-      }
-
+      body { padding: 24px; }
+      .week-image { width: 90%; }
+      .week-title { padding: 18px 40px; }
       .back-btn {
         top: 16px;
         left: 16px;
         font-size: 13px;
         padding: 7px 16px;
+      }
+      .github-bottom {
+        margin-top: 16px;
       }
     }
   </style>
@@ -187,32 +201,45 @@
 
   </div>
 
+  <!-- GITHUB KNOP -->
+  <div class="github-bottom">
+    <a
+      href="https://github.com/OleksandraZharinova/Projectdocumentatie_ZharinovaO.git"
+      class="side-btn"
+      target="_blank"
+      rel="noopener noreferrer"
+      id="githubBtn"
+    >
+      GitHub
+    </a>
+  </div>
+
   <script>
-    // Kleine click-animatie voor de terugknop
+    // Terugknop animatie
     const backBtn = document.getElementById("backBtn");
     backBtn.addEventListener("click", () => {
       backBtn.classList.add("animate");
       setTimeout(() => backBtn.classList.remove("animate"), 200);
     });
 
-    // Zoom klik gedrag
+    // Afbeelding zoom
     const img = document.getElementById("weekImg");
-
     img.addEventListener("click", () => {
       const wasEnlarged = img.classList.contains("enlarged");
       img.classList.toggle("enlarged");
 
       if (!wasEnlarged) {
-        img.scrollIntoView({
-          behavior: "smooth",
-          block: "center"
-        });
+        img.scrollIntoView({ behavior: "smooth", block: "center" });
       } else {
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth"
-        });
+        window.scrollTo({ top: 0, behavior: "smooth" });
       }
+    });
+
+    // GitHub knop animatie
+    const githubBtn = document.getElementById("githubBtn");
+    githubBtn.addEventListener("click", () => {
+      githubBtn.classList.add("button-animate");
+      setTimeout(() => githubBtn.classList.remove("button-animate"), 150);
     });
   </script>
 
