@@ -103,13 +103,58 @@
       background-color: #72b3af;
       padding: 22px 30px;
       border-radius: 55px;
-      font-size: clamp(2.2rem, 10vw, 5rem); 
+      font-size: clamp(2.2rem, 10vw, 5rem);
       font-weight: 700;
       max-width: 720px;
       margin: 0 auto 30px auto;
       line-height: 1.4;
       font-family: "Acme", sans-serif;
-      margin-top: 100px; 
+      margin-top: 100px;
+    }
+
+    /* ===== GITHUB KNOP ===== */
+    .github-bottom {
+      margin-top: 20px;      /* ✅ zoals gevraagd */
+      padding-bottom: 40px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .side-btn {
+      background-color: #72b3af;
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      padding: 12px 34px;
+      border-radius: 30px;
+      font-weight: 600;
+      transition: transform 0.15s ease, background-color 0.2s ease;
+      display: inline-block;
+      text-align: center;
+    }
+
+    .side-btn:hover {
+      background-color: #6aa8a4;
+      transform: scale(1.06);
+    }
+
+    .button-animate {
+      animation: clickBounce 0.15s ease;
+    }
+
+    /* Kleine responsive tweak */
+    @media (max-width: 768px) {
+      body { padding: 24px; }
+      .back-btn {
+        top: 16px;
+        left: 16px;
+        font-size: 13px;
+        padding: 7px 16px;
+      }
+      .github-bottom {
+        margin-top: 16px;
+        padding-bottom: 28px;
+      }
     }
   </style>
 </head>
@@ -130,6 +175,19 @@
     </p>
   </div>
 
+  <!-- GITHUB KNOP -->
+  <div class="github-bottom">
+    <a
+      href="https://github.com/OleksandraZharinova/Projectdocumentatie_ZharinovaO.git"
+      class="side-btn"
+      target="_blank"
+      rel="noopener noreferrer"
+      id="githubBtn"
+    >
+      GitHub
+    </a>
+  </div>
+
   <script>
     const backBtn = document.getElementById("backBtn");
     backBtn.addEventListener("click", () => {
@@ -137,20 +195,12 @@
       setTimeout(() => backBtn.classList.remove("animate"), 200);
     });
 
-    const img = document.getElementById("weekImg");
-
-    if (img) {
-      img.addEventListener("click", () => {
-        const wasEnlarged = img.classList.contains("enlarged");
-        img.classList.toggle("enlarged");
-
-        if (!wasEnlarged) {
-          img.scrollIntoView({ behavior: "smooth", block: "center" });
-        } else {
-          window.scrollTo({ top: 0, behavior: "smooth" });
-        }
-      });
-    }
+    // GitHub knop animatie
+    const githubBtn = document.getElementById("githubBtn");
+    githubBtn.addEventListener("click", () => {
+      githubBtn.classList.add("button-animate");
+      setTimeout(() => githubBtn.classList.remove("button-animate"), 150);
+    });
   </script>
 
 </body>
